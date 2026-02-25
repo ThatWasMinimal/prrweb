@@ -7,7 +7,7 @@
         "aurweb but cute",
         "its called prrweb for a reason",
         "i dont wanna get canceled",
-        "there is no limit to the GLAZE."
+        "its all cute and simple"
     ];
 
     function sayRandomThings() {
