@@ -9,7 +9,7 @@ export const load: PageServerLoad = async ({ params, fetch }) => {
   const offset = page * perPage;
 
   const res = await fetch(
-    `https://aur.archlinux.org/rpc/?v=5&type=search&arg=${encodeURIComponent(query)}&offset=${offset}`
+    `https://aur.archlinux.org/rpc/v5/search/${query}?by=name`
   );
 
   const data = await res.json();
