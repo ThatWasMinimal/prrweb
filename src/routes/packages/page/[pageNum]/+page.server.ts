@@ -1,16 +1,28 @@
 import type { PageServerLoad } from '../../$types';
-
 import * as cheerio from 'cheerio';
 
 const BASE =
   'https://aur.archlinux.org/packages?SB=p&SO=d&O=';
 
-export const load: PageServerLoad = async ({ url }) => {
+const TTL = 60 * 5; 
+
+export const load: PageServerLoad = async (event) => {
+  const { url, fetch, platform } = event;
+  const kv = platform?.env?.cache;
+
   const offset = url.searchParams.get('offset') ?? '0';
+  const key = `list:${offset}`;
+
+  if (kv) {
+    const cached = await kv.get(key, { type: "json" });
+    if (cached) {
+      return { packages: cached };
+    }
+  }
 
   const res = await fetch(`${BASE}${offset}`);
   if (!res.ok) {
-    return new Response('Failed to fetch AUR', { status: 500 });
+    throw new Error('Failed to fetch AUR');
   }
 
   const html = await res.text();
@@ -32,7 +44,11 @@ export const load: PageServerLoad = async ({ url }) => {
     });
   });
 
-  return {
-    packages
-  };
+  if (kv) {
+    await kv.put(key, JSON.stringify(packages), {
+      expirationTtl: TTL
+    });
+  }
+
+  return { packages };
 };
