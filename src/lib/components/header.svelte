@@ -46,7 +46,7 @@
 			</a>
 
 			<a
-				href="https://github.com/prrweb/prrweb"
+				href="https://github.com/ThatWasMinimal/prrweb"
 				target="_blank"
 				rel="noopener noreferrer"
 				class="flex items-center gap-2 text-sm

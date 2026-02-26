@@ -23,7 +23,7 @@
 		</div>
 
 		<a
-			href="https://github.com/prrweb/prrweb"
+			href="https://github.com/ThatWasMinimal/prrweb"
 			target="_blank"
 			rel="noopener noreferrer"
 			class="flex items-center gap-2 text-sm text-[#9ca3af] transition-colors duration-200 hover:text-[#a3b18a]"
