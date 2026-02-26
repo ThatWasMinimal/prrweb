@@ -41,28 +41,65 @@
 
         <div>
           <p class="text-[#9ca3af] mb-1">Votes</p>
-          <p class="text-[#e6e6e6] font-medium">{data.pkg.NumVotes}</p>
+          <p class="font-medium">{data.pkg.NumVotes}</p>
         </div>
 
         <div>
           <p class="text-[#9ca3af] mb-1">Popularity</p>
-          <p class="text-[#e6e6e6] font-medium">
+          <p class="font-medium">
             {data.pkg.Popularity ?? '—'}
           </p>
         </div>
 
         <div>
           <p class="text-[#9ca3af] mb-1">Maintainer</p>
-          <p class="text-[#e6e6e6] font-medium">
+          <p class="font-medium">
             {data.pkg.Maintainer ?? 'orphaned'}
           </p>
         </div>
 
         <div>
-          <p class="text-[#9ca3af] mb-1">Last Updated</p>
-          <p class="text-[#e6e6e6] font-medium">
+          <p class="text-[#9ca3af] mb-1">Submitter</p>
+          <p class="font-medium">
+            {data.pkg.Submitter}
+          </p>
+        </div>
+
+        <div>
+          <p class="text-[#9ca3af] mb-1">First Submitted</p>
+          <p class="font-medium">
+            {formatDate(data.pkg.FirstSubmitted)}
+          </p>
+        </div>
+
+        <div>
+          <p class="text-[#9ca3af] mb-1">Last Modified</p>
+          <p class="font-medium">
             {formatDate(data.pkg.LastModified)}
           </p>
+        </div>
+
+        <div>
+          <p class="text-[#9ca3af] mb-1">License</p>
+          <p class="font-medium">
+            {data.pkg.License?.join(', ') ?? '—'}
+          </p>
+        </div>
+
+        <div>
+          <p class="text-[#9ca3af] mb-1">Project URL</p>
+          {#if data.pkg.URL}
+            <a
+              href={data.pkg.URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-medium text-[#a3b18a] hover:underline break-all"
+            >
+              {data.pkg.URL}
+            </a>
+          {:else}
+            <p class="font-medium">—</p>
+          {/if}
         </div>
 
       </div>

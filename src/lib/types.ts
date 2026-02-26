@@ -18,6 +18,7 @@ export interface AURPackageDetailed {
     MakeDepends?: string[];
     OptDepends?: string[];
     CheckDepends?: string[];
+    Submitter: string;
 }
 
 export interface AURResponse {
