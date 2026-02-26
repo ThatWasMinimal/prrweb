@@ -3,9 +3,10 @@
 	import Search from '$lib/components/search.svelte';
 
 	function handleSearch(e) {
-		const query = e.detail;
+		const { query, by } = e.detail;
 		if (!query) return;
-		window.location.href = `/packages/search/${query}/0`;
+
+		window.location.href = `/packages/search/${query}/${by}/0`;
 	}
 </script>
 
