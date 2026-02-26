@@ -4,7 +4,7 @@
 	import Footer from '$lib/components/footer.svelte';
 
 	let { children } = $props();
-	console.log("wellcome to pawsole!, hope you dont find any bugs in here")
+	console.log('wellcome to pawsole!, hope you dont find any bugs in here');
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
