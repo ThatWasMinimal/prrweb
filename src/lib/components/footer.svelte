@@ -10,7 +10,7 @@
 			href="/"
 			class="flex items-center gap-2 text-sm tracking-tight text-[#e6e6e6] transition-colors duration-200 hover:text-[#a3b18a]"
 		>
-			prrweb <PawPrint size={16} />
+			<PawPrint size={16} />
 		</a>
 
 		<div class="flex flex-row items-start gap-1 text-sm text-[#9ca3af]">
