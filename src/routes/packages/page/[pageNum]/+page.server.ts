@@ -1,22 +1,24 @@
-import type { PageServerLoad } from '../../$types';
+import type { PageServerLoad } from './$types';
 import * as cheerio from 'cheerio';
 
-const BASE =
+let BASE =
   'https://aur.archlinux.org/packages?SB=p&SO=d&O=';
 
-const TTL = 60 * 5; 
+const TTL = 60 * 5;
 
-export const load: PageServerLoad = async (event) => {
-  const { url, fetch, platform } = event;
+export const load: PageServerLoad = async ({ params, fetch, platform }) => {
   const kv = platform?.env?.cache;
 
-  const offset = url.searchParams.get('offset') ?? '0';
-  const key = `list:${offset}`;
+  const page = Number(params.pageNum ?? '0');
+
+  const offset = page * 50;
+
+  const key = `list:${page}`;
 
   if (kv) {
-    const cached = await kv.get(key, { type: "json" });
+    const cached = await kv.get(key, { type: 'json' });
     if (cached) {
-      return { packages: cached };
+      return { packages: cached, page };
     }
   }
 
@@ -50,5 +52,5 @@ export const load: PageServerLoad = async (event) => {
     });
   }
 
-  return { packages };
+  return { packages, page };
 };
