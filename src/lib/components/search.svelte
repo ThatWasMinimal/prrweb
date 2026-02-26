@@ -24,20 +24,20 @@
   }
 
   const options = [
-    "Name",
-    "Name Description",
-    "Maintainer",
-    "Depends",
-    "Make Depends",
-    "Optional Depends",
-    "Check Depends",
-    "Provides",
-    "Conflicts",
-    "Replaces",
-    "Keywords",
-    "Groups",
-    "Submitter",
-    "Co-maintainers"
+    { label: "Name", value: "name" },
+    { label: "Name + Description", value: "name-desc" },
+    { label: "Maintainer", value: "maintainer" },
+    { label: "Depends", value: "depends" },
+    { label: "Make Depends", value: "makedepends" },
+    { label: "Optional Depends", value: "optdepends" },
+    { label: "Check Depends", value: "checkdepends" },
+    { label: "Provides", value: "provides" },
+    { label: "Conflicts", value: "conflicts" },
+    { label: "Replaces", value: "replaces" },
+    { label: "Keywords", value: "keywords" },
+    { label: "Groups", value: "groups" },
+    { label: "Submitter", value: "submitter" },
+    { label: "Co-maintainers", value: "comaintainers" }
   ];
 </script>
 
@@ -52,7 +52,7 @@
              focus:outline-none focus:border-[#a3b18a]"
     >
       {#each options as opt}
-        <option value={opt}>{opt}</option>
+        <option value={opt.value}>{opt.label}</option>
       {/each}
     </select>
 
